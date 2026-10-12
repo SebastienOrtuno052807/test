@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenReader — your free read-later library</title>
+<link rel="stylesheet" href="/styles.css">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" type="image/png" href="/icons/icon-192.png">
+<meta name="theme-color" content="#171a21">
+</head>
+<body>
+<div id="app">
+  <aside id="sidebar">
+    <div class="brand">📖 OpenReader</div>
+    <nav id="main-nav">
+      <button data-view="library" class="nav active">📚 Library</button>
+      <button data-view="review" class="nav">🧠 Review <span id="due-badge" class="badge hidden"></span></button>
+      <button data-view="favorites" class="nav">⭐ Favorites</button>
+      <button data-view="archive" class="nav">🗄 Archive</button>
+    </nav>
+    <div class="side-label">Tags</div>
+    <div id="tag-list"><div class="side-hint">No tags yet</div></div>
+    <div class="side-label">Tools</div>
+    <nav>
+      <button data-view="import" class="nav">⇅ Import / Export</button>
+    </nav>
+    <div id="side-stats"></div>
+  </aside>
+  <main>
+    <header id="topbar">
+      <input id="search" type="search" placeholder="Search titles, authors, content…" autocomplete="off">
+      <div class="top-actions">
+        <button id="btn-save-url" class="btn primary">+ Save URL</button>
+        <button id="btn-new-note" class="btn">+ Note</button>
+        <button id="btn-upload" class="btn">Upload</button>
+        <button id="btn-theme" class="btn" title="Toggle dark / light mode">🌙</button>
+        <input type="file" id="file-upload" hidden accept=".pdf,.epub,.html,.htm,.txt,.md">
+      </div>
+    </header>
+    <section id="view"></section>
+  </main>
+</div>
+<div id="modal-root"></div>
+<div id="toast-root"></div>
+<script src="/vendor/pdf.min.js"></script>
+<script>
+  if (window.pdfjsLib) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "/vendor/pdf.worker.min.js";
+  }
+</script>
+<script src="/app.js"></script>
+</body>
+</html>
