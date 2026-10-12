@@ -1,0 +1,36 @@
+{
+  "background": {
+    "persistent": false,
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "default_icon": {
+      "48": "icons/icon-192.png"
+    },
+    "default_popup": "popup.html",
+    "default_title": "Save to OpenReader"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "save-to-openreader@openreader.local"
+    }
+  },
+  "description": "Save the current page or any link to your OpenReader library \u2014 the free Readwise Reader alternative.",
+  "icons": {
+    "48": "icons/icon-192.png",
+    "96": "icons/icon-192.png"
+  },
+  "manifest_version": 2,
+  "name": "Save to OpenReader",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage",
+    "contextMenus",
+    "<all_urls>",
+    "notifications"
+  ],
+  "version": "1.0"
+}
