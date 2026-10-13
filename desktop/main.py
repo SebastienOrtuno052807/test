@@ -12,6 +12,15 @@ import time
 import webbrowser
 from pathlib import Path
 
+# In a windowed (console=False) frozen build, stdout/stderr are None, which
+# crashes uvicorn's logging setup. Redirect them to a log file instead.
+if sys.stdout is None or sys.stderr is None:
+    _log = open(Path.home() / "OpenReader.log", "a", buffering=1)
+    if sys.stdout is None:
+        sys.stdout = _log
+    if sys.stderr is None:
+        sys.stderr = _log
+
 # make sure `backend` is importable whether running from source or frozen
 if getattr(sys, "frozen", False):
     sys.path.insert(0, sys._MEIPASS)
